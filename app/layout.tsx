@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import SideBarComponent from "./Components/Sidebar-Component/Sidebar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,7 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${poppins.className} antialiased`}>{children}</body>
+      <body
+        className={`${poppins.className} 
+      antialiased`}
+      >
+        <div className="flex gap-4">
+          <SideBarComponent />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

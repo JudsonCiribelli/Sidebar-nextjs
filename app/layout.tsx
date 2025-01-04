@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import SideBarComponent from "./Components/Sidebar-Component/Sidebar";
+import { SidebarProvider, SidebarTrigger } from "./Components/ui/sidebar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,10 +25,17 @@ export default function RootLayout({
         className={`${poppins.className} 
       antialiased`}
       >
-        <div className="flex gap-4">
+        <SidebarProvider>
           <SideBarComponent />
-          {children}
-        </div>
+          <main>
+            <SidebarTrigger />
+            {children}
+          </main>
+        </SidebarProvider>
+
+        {/*<div className="flex gap-4">
+          <SideBarComponent />
+        </div> */}
       </body>
     </html>
   );

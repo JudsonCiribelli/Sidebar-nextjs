@@ -1,10 +1,17 @@
 "use client";
-import { SideBarItemInterface } from "../Sidebar-Item-Component/Sidebar-Item-Component";
+//Components
+import SidebarItemComponent, {
+  SideBarItemInterface,
+} from "../Sidebar-Item-Component/Sidebar-Item-Component";
+//Utilits
+import { Button } from "../ui/button";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
+  SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarMenu,
 } from "../ui/sidebar";
 import { House, Inbox, Calendar, Search, Settings } from "lucide-react";
 
@@ -41,6 +48,24 @@ const SideBarComponent = () => {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Applications</SidebarGroupLabel>
+          <SidebarGroupContent className="mt-10">
+            <SidebarMenu className="flex flex-col gap-4">
+              {items.map((item) => (
+                <Button
+                  key={item.title}
+                  variant={"outline"}
+                  className="rounded"
+                >
+                  <SidebarItemComponent
+                    key={item.title}
+                    title={item.title}
+                    url={item.url}
+                    icon={item.icon}
+                  />
+                </Button>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>

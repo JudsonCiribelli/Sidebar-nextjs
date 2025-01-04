@@ -11,7 +11,9 @@ const SidebarItemComponent = (props: SideBarItemInterface) => {
     <SidebarMenuItem key={props.title}>
       <SidebarMenuButton asChild>
         <a href={props.url}>
-          {props.icon}
+          <h1 key={props.title} title="Icon">
+            {props.icon}
+          </h1>
           <span>{props.title}</span>
         </a>
       </SidebarMenuButton>
